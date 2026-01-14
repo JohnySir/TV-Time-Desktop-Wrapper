@@ -1,0 +1,21 @@
+{
+  "name": "tvtime",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "Windows wrapper for Tv Time",
+  "build": {
+    "appId": "com.tvtime.wrapper",
+    "win": {
+      "target": "nsis",
+      "icon": "icon.ico" 
+    }
+  }
+}

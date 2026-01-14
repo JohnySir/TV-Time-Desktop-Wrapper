@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #1a1a1a;
+      color: #888;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      height: 100vh;
+      overflow: hidden;
+      user-select: none;
+    }
+    .title-bar {
+      height: 30px;
+      width: 100%;
+      display: flex;
+      align-items: center; 
+      justify-content: center;
+      -webkit-app-region: drag;
+      background-color: #1a1a1a;
+      position: relative;
+    }
+    .title-text {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      pointer-events: none;
+      color: #ccc;
+    }
+    
+    .menu-btn {
+      position: absolute;
+      left: 10px;
+      top: 0;
+      height: 30px;
+      width: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      -webkit-app-region: no-drag; 
+      color: #aaa;
+      font-size: 18px;
+    }
+    .menu-btn:hover {
+      color: #fff;
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="title-bar">
+    <div class="menu-btn" id="menuBtn">☰</div>
+    <div class="title-text">TV TIME</div>
+  </div>
+
+  <script>
+    const { ipcRenderer } = require('electron');
+    const menuBtn = document.getElementById('menuBtn');
+
+    // Just tell Main Process to show the native menu
+    menuBtn.addEventListener('click', () => {
+      ipcRenderer.send('show-context-menu');
+    });
+  </script>
+</body>
+</html>
